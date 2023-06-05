@@ -20,11 +20,11 @@
 # MainActivity.java
 
 - Выполняет только функцию стартовой страницы
-- Реализована кнопка: `private Button button;` при нажатии перевоящая на следующуя страницу **boundedList.java**
+- Реализована кнопка: `private Button button;` при нажатии переводящая на следующую страницу **boundedList.java**
 - Переход на страницу реализуется `android:onClick="goList"` в **xml** файле к **MainActivity**, тем самым при нажатии вызывая функцию `public void goList(View view) {
         Intent intent = new Intent(this, boundedList.class);
-        startActivity(intent); }` в которой реализуется переход на другую страницу
-- В дальнейшем, переходы на другие **activity** реализованы таким же способом
+        startActivity(intent); }`, в которой реализуется переход на другую страницу
+- В дальнейшем переходы на другие **activity** реализованы таким же способом
 
 - - - 
 
