@@ -40,6 +40,8 @@
         Intent intent = new Intent(this, findDev.class);
         startActivity(intent); }`, нажатие на которую вызывает функцию **goList_2**
 
+- - -
+
 # findDev.java
 - Реализует поиск доступных bluetooth утройств поблизости
 - `ArrayList<String> stringArrayList = new ArrayList<>();`, инициализируем массив, который будет использован для ханения имен найденных устройств
