@@ -1,5 +1,5 @@
 # BluetoothTest
 
-#MainActivity.java
+# MainActivity.java
 
--Выполняет только функцию стартовой страницы
+- Выполняет только функцию стартовой страницы
