@@ -41,21 +41,26 @@
         startActivity(intent); }`, нажатие на которую вызывает функцию **goList_2**
 
 # findDev.java
-
 - Реализует поиск доступных bluetooth утройств поблизости
+- `ArrayList<String> stringArrayList = new ArrayList<>();`, инициализируем массив, который будет использован для ханения имен найденных устройств
+- Объявляем и инициализируем переменную **adapter** `BluetoothAdapter myAdapter = BluetoothAdapter.getDefaultAdapter();`, подключаясь к **bluetooth** модулю устройства
 - **Запрашиваемые разрешения**
-  - `ActivityCompat.requestPermissions(this,
+        - `ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.BLUETOOTH_SCAN},
                     DANGEROUS_RESULT_CODE);`
-  - `discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+        - `discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
         startActivityForResult(discoverableIntent, requestCode);`
-  - `ActivityCompat.requestPermissions(this,
+        - `ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                 DANGEROUS_RESULT_CODE);`
+- `myAdapter.startDiscovery();`, делая проверку на уже начатый поиск bluetooth устройств, запускаем его, в случае если он не запущен
 - Инициализация списка в который будут представлены устройства `listDevices = findViewById(R.id.myList);`
+- `arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, stringArrayList);`, инициализируем переменную **arrayAdapter**. Для наиболее удобного взаимодействия с визуальным отображением списка, используем конструктор
 - Инициализация кнопки начала поиска устройств `scanButton = findViewById(R.id.butt);`
 - Отслеживание нажатия кнопки поиска `scanButton.setOnClickListener(new View.OnClickListener()...`
 - ` IntentFilter intentFilter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                     registerReceiver(myReciever, intentFilter);` создание **intent** фильтра для отслеживания события нахождения новго **bluetooth** утройства.
-- **MyReciever** 'это BroadcastReciever для выполнения **intent** в **registerReceiver** `roadcastReceiver myReciever = new BroadcastReceiver() {...`
+- **myReciever** 'это BroadcastReciever для выполнения **intent** в **registerReceiver** `roadcastReceiver myReciever = new BroadcastReceiver() {...`
+- Далее в **myReciever**, реализуем добавление имени найденного устройства в **stringArrayList**
+- Обновляем arrayAdapter `arrayAdapter.notifyDataSetChanged();`            
 
